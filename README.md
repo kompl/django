@@ -1,1 +1,1 @@
-Simple Flask application
+Simple django application
