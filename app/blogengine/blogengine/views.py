@@ -1,5 +1,8 @@
-#from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic import ListView
+from blog.models import Post
+from services.search import SearchResult
 
 
-#def hello(request):
-#    return HttpResponse('<h1>Hello world!</h1>')
+def start_page(request):
+    return render(request, 'start_page.html')

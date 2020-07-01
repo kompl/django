@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block content %}
+    {% for post in post_list %}
+        {% include 'blog/includes/post_card_template.html' %}
+    {% endfor %}
+{% endblock %}
