@@ -1,0 +1,14 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Confirm delete {{ post.title }} - {{block.super}}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+      {% csrf_token %}
+      <p>Are you sure you want to delete "{{ post.title }}" ?</p>
+      <input type="submit" class="btn btn-danger" value="Confirm">
+      <a href="{{ post.get_absolute_url }}" class="btn btn-dark">No</a>
+    </form>
+{% endblock %}

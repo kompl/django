@@ -3,6 +3,8 @@ from django.views.generic import View, UpdateView
 from .models import Post, Tag
 from .utils import ObjectDetailMixin, ObjectCreateMixin
 from .forms import TagForm, PostForm
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 def posts_list(request):
@@ -38,6 +40,15 @@ class PostCreate(ObjectCreateMixin, View):
     form_model = PostForm
     template = 'blog/post_create.html'
 
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('posts_list_url')
+
+
+class TagDelete(DeleteView):
+    model = Tag
+    success_url = reverse_lazy('tags_list_url')
 
 def tags_list(request):
     tags = Tag.objects.all()
