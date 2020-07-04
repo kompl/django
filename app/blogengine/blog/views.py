@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View
+from django.views.generic import View, UpdateView
 from .models import Post, Tag
 from .utils import ObjectDetailMixin, ObjectCreateMixin
 from .forms import TagForm, PostForm
@@ -20,6 +20,18 @@ class TagDetail(ObjectDetailMixin, View):
 class TagCreate(ObjectCreateMixin, View):
     form_model = TagForm
     template = 'blog/tag_create.html'
+
+
+class TagEdit(UpdateView):
+    model = Tag
+    fields = ['title', 'slug']
+    template_name_suffix = '_edit_form'
+
+
+class PostEdit(UpdateView):
+    model = Post
+    fields = ['title', 'body', 'tags', 'slug']
+    template_name_suffix = '_edit_form'
 
 
 class PostCreate(ObjectCreateMixin, View):

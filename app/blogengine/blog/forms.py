@@ -19,7 +19,7 @@ class TagForm(forms.ModelForm):
         if new_slug == 'create':
             raise ValidationError('Slug may not be \'create\'')
         elif Tag.objects.filter(slug__iexact=new_slug).count():
-            raise ValidationError(f'Be smarter! Get me another slug! {new_slug} stfu!')
+            raise ValidationError(f'Please enter another slug, {new_slug} already taken')
         return new_slug
 
 class PostForm(forms.ModelForm):
