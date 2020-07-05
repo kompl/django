@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views.generic import ListView
 from blog.models import Post
 from services.search import SearchResult
 
 
-def start_page(request):
-    return render(request, 'start_page.html')
+def redirect_blog(request):
+    return redirect('posts_list_url', permanent=True)

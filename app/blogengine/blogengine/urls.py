@@ -19,7 +19,7 @@ from django.urls import include
 from .views import *
 
 urlpatterns = [
-    path('', start_page, name='start_page_url'),
+    path('', redirect_blog, name='start_page_url'),
     path('search/', SearchResult.as_view(), name='search_result_url'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls'))
