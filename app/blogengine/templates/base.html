@@ -27,6 +27,15 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'tags_list_url'%}">  TAGS  </a>
         </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'logout' %}">  LOGOUT {{ request.user.get_username }} </a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'login' %}">  LOGIN  </a>
+          </li>
+        {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'search_result_url' %}" method="GET">
         <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search post.."  aria-label="Search">
@@ -35,7 +44,7 @@
     </div>
   </nav>
   <div class="container mt-3">
-    <div class="row align-items-start">
+    <div class="row justify-content-md-center">
         {% block content %}
           block content
         {% endblock %}
