@@ -5,10 +5,19 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="mt-5">
-    {{ post.title }}
-  </h1>
-  <p>
-    {{ post.body }}
-  </p>
+<div class="col col-md">
+  <div class="col">
+    <h1>
+      {{ post.title }}
+    </h1>
+  </div>
+  <div class="col">
+    <p>
+      {{ post.body }}
+    </p>
+  </div>
+
+</div>
+
+
 {% endblock %}
