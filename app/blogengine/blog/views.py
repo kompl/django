@@ -6,14 +6,17 @@ from .forms import TagForm, PostForm
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from services.paginate import paginate
+
 
 
 def posts_list(request):
-    posts = Post.objects.all().order_by('-date_pub')
-    return render(request, 'blog/index.html', context={'posts': posts})
+    posts = Post.objects.all()
+    context = paginate(request, posts)
+    return render(request, 'blog/index.html', context=context)
 
 def tags_list(request):
-    tags = Tag.objects.all().order_by('title')
+    tags = Tag.objects.all()
     return render(request, 'blog/tags_list.html', context={'tags':tags})
 
 

@@ -6,8 +6,9 @@
 
 {% block content %}
   <div class="row align-items-start">
-    {% for post in posts %}
+    {% for post in page.object_list %}
       {% include 'blog/includes/post_card_template.html' %}
     {% endfor %}
   </div>
+  {% include 'blog/includes/paginate.html' %}
 {% endblock %}

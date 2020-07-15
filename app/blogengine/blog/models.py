@@ -28,6 +28,9 @@ class Post(models.Model):
     def get_delete_url(self):
         return reverse('post_confirm_url', kwargs={'slug': self.slug})
 
+    class Meta:
+        ordering = ['-date_pub']
+
     def __str__(self):
         return self.title
 
@@ -48,6 +51,9 @@ class Tag(models.Model):
 
     def get_delete_url(self):
         return reverse('tag_confirm_url', kwargs={'slug': self.slug})
+
+    class Meta:
+        ordering = ['title']
 
     def __str__(self):
         return self.title
